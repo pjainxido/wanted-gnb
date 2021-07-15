@@ -1,0 +1,95 @@
+@import './mixin.scss';
+
+.gnb {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.desktop {
+  //diff 
+  position: relative;
+  max-width: 1060px;
+  height: 50px;
+  @include mobile {
+    &.isLoggedIn {
+      height: 57px;
+      padding-top: 4px;
+    }
+    height: 102px;
+  }
+  @include tablet_s{
+    margin: 0 auto;
+    height: 50px;
+    width: 90%;
+  }
+  @include tablet_l{
+    margin: 0 auto;
+    height: 50px;
+    width: 90%;
+  }
+
+  //
+  .gnb {
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    .logo_signup_container {
+      display: flex;
+      .logo {
+        display: block;
+        cursor: pointer;
+        i {
+          font-size: 17px;
+          // font-family: 'icomoon' !important;
+          // speak: none;
+          // font-style: normal;
+          // font-weight: normal;
+          // font-variant: normal;
+          // text-transform: none;
+          // line-height: 1;
+          // -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+    .navBar {
+      height: inherit;
+      text-align: center;
+      margin: 0;
+      list-style: none;
+      .onMobileDisplay {
+        display: none;
+        a {
+          padding: 14px 13px 19px 20px;
+        }
+      }
+      li {
+        height: inherit;
+        display: inline-block;
+        a {
+          position: relative;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 600;
+          padding: 15px;
+        }
+      }
+      .moreVisible {
+        a {
+        }
+      }
+    }
+    .asideContainer {
+      display: block;
+      height: 100%;
+      padding: 10px 0;
+    }
+  }
+}
