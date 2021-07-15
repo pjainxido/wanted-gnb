@@ -1,0 +1,11 @@
+ul, ol{
+  list-style: none;
+
+}
+
+body{
+  font-family: -apple-system,Helvetica,Arial,'Apple SD Gothic Neo','Nanum Gothic','Malgun Gothic' sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+}
