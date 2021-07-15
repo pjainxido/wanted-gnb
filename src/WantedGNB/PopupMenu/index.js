@@ -1,10 +1,10 @@
 import React from 'react';
 import './PopupMenu.scss';
-const PopupMenu= ({isPopup}) => {
+const PopupMenu= ({isPopup, onMouseLeave}) => {
   console.log(isPopup);
   return (
     <div className={isPopup? 'popupMenu show' : 'popupMenu' } >
-      <div className='overlay'>
+      <div className='overlay' onMouseLeave={onMouseLeave} >
         <div className='container'>
           <div className='row'>
             <div class='linkList'>
