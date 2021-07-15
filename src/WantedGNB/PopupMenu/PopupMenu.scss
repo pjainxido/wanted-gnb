@@ -1,0 +1,76 @@
+@import '../mixin.scss';
+
+.popupMenu {
+  top: 50px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+
+  .overlay {
+    position: relative;
+    height: 0%;
+    max-height: 625px;
+    background-color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    .container {
+      margin: 0 auto;
+      max-width: 1060px;
+      padding: 0;
+      min-width: 1060px;
+      @media (min-width: $breakpoint-tablet) {
+        width: 90%;
+      }
+      .row {
+        margin-right: -20px;
+        margin: 0;
+        .linkList {
+          float: left;
+          width: 16.666%;
+          height: 270px;
+          padding: 40px 20px 0 0;
+          text-align: left;
+          a {
+            display: block;
+            text-decoration: inherit;
+            cursor: pointer;
+            &,
+            &:hover,
+            &:visited,
+            &:active {
+              color: inherit;
+            }
+
+            h2 {
+              position: relative;
+              font-size: 17px;
+              color: #333;
+              line-height: 20px;
+              vertical-align: top;
+              padding-right: 20px;
+              padding-bottom: 15px;
+              width: 100%;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.show {
+    display: block;
+    height: auto;
+    opacity: 1;
+    .overlay {
+      height: 100%;
+    }
+  }
+}
