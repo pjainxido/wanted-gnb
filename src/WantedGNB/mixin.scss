@@ -24,3 +24,10 @@ $breakpoint-desktop: 1200px;
     @content;
   }
 }
+
+@mixin nonMobile{
+  @media (min-width: #{$breakpoint-mobile+1})  {
+    @content;
+  }
+
+}
