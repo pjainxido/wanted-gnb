@@ -1,6 +1,9 @@
 @import '../mixin.scss';
 
 .popupMenu {
+  @include mobile{
+    display: none;
+  }
   top: 50px;
   position: fixed;
   left: 0;
@@ -15,7 +18,7 @@
   .overlay {
     position: relative;
     height: 0%;
-    max-height: 625px;
+    max-height: 377px;
     background-color: #fff;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -23,11 +26,45 @@
       margin: 0 auto;
       max-width: 1060px;
       padding: 0;
-      min-width: 1060px;
-      @media (min-width: $breakpoint-tablet) {
+      @media (min-width: $breakpoint-mobile) {
         width: 90%;
       }
       .row {
+        .wdlist {
+          float: left;
+          width: 13%;
+          height: 270px;
+          padding: 40px 20px 0 0;
+          text-align: left;
+          a{
+            display: block;
+            text-decoration: inherit;
+            cursor: pointer;
+            &,
+            &:hover,
+            &:visited,
+            &:active {
+              color: inherit;
+            }
+          }
+          h3{
+            position: relative;
+            font-size: 13px;
+            color: #999;
+            padding: 5px 20px 5px 0;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            i{
+              position: absolute;
+              top: 0;
+              right: 0;
+              font-size: 20px;
+              color: #999;
+            }
+          }
+        }
         margin-right: -20px;
         margin: 0;
         .linkList {
@@ -66,6 +103,9 @@
     }
   }
   &.show {
+    @include mobile{
+      display: none;
+    }
     display: block;
     height: auto;
     opacity: 1;
