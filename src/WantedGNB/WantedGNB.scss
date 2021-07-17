@@ -1,39 +1,59 @@
 @import './mixin.scss';
 
-.gnb {
-  position: fixed;
+@font-face {
+  font-family: 'icomoon';
+  src: url('https://d1azc1qln24ryf.cloudfront.net/78252/wantedicon/icomoon.woff2?8et930') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.wanted_gnb {
   width: 100%;
+  position: fixed;
   background-color: #fff;
   -webkit-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
-.desktop {
-  //diff 
+.contents {
+  //diff
   position: relative;
   max-width: 1060px;
   height: 50px;
   @include mobile {
-    &.isLoggedIn {
+    &.isLogIn {
       height: 57px;
       padding-top: 4px;
+      .gnb {
+        .logo_signup_container {
+          display: none;
+        }
+      }
     }
     height: 102px;
   }
-  @include tablet_s{
+  @include tablet_s {
     margin: 0 auto;
     height: 50px;
     width: 90%;
   }
-  @include tablet_l{
+  @include tablet_l {
     margin: 0 auto;
     height: 50px;
     width: 90%;
+  }
+  @include desktop {
+    margin: 0 auto;
+    height: 50px;
+    width: 87.72%;
   }
 
   //
-  .gnb {
+  .gnb,
+  .logo_signup_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -41,34 +61,89 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+  .gnb {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     .logo_signup_container {
+      @include mobile {
+        width: 100%;
+        padding: 15px 20px 0;
+      }
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
       .logo {
-        display: block;
-        cursor: pointer;
-        i {
-          font-size: 17px;
-          // font-family: 'icomoon' !important;
-          // speak: none;
-          // font-style: normal;
-          // font-weight: normal;
-          // font-variant: normal;
-          // text-transform: none;
-          // line-height: 1;
-          // -webkit-font-smoothing: antialiased;
+        @include tablet_s {
+          position: relative;
+          float: left;
         }
+        display: block;
+        &,
+        &:active,
+        &:hover,
+        &:visited {
+          color: inherit;
+        }
+        & {
+          text-decoration: inherit;
+          cursor: pointer;
+        }
+        .icon {
+          font-size: 21px;
+          font-family: 'icomoon' !important;
+          font-weight: 900;
+          font-style: normal;
+          font-feature-settings: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+      .signup_login {
+        @include nonMobile {
+          display: none;
+        }
+        display: block;
+        color: #36f;
+        font-size: 14px;
+        line-height: 32px;
+        height: 34px;
+        border: 1px solid #36f;
+        border-radius: 17px;
+        padding: 0 14px;
       }
     }
     .navBar {
       height: inherit;
       text-align: center;
       margin: 0;
-      list-style: none;
-      .onMobileDisplay {
-        display: none;
-        a {
-          padding: 14px 13px 19px 20px;
-        }
+      @include mobile {
+        text-align: left;
+      }
+      @include tablet_s {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+        -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+        justify-content: space-evenly;
       }
       li {
         height: inherit;
@@ -79,17 +154,35 @@
           line-height: 20px;
           font-weight: 600;
           padding: 15px;
+          color: inherit;
+          text-decoration: inherit;
+          cursor: pointer;
+          //selected nav under bar need
+          @include mobile {
+            padding: 14px 13px 19px;
+          }
+          @include tablet_s {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+            font-size: 13px;
+          }
+        }
+      }
+      .mobileHomeButton {
+        @include nonMobile {
+          display: none;
+        }
+        a {
+          padding: 14px 13px 19px 20px;
         }
       }
       .moreVisible {
+        @include mobile {
+          display: none;
+        }
         a {
         }
       }
-    }
-    .asideContainer {
-      display: block;
-      height: 100%;
-      padding: 10px 0;
     }
   }
 }
