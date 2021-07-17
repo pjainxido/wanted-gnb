@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { GNBContext } from '../';
-import BetaSVG from '../BetaSVG';
+import BetaSVG from './BetaSVG';
 import MainPopUp from '../MainPopUp';
 import AsideMenu from '../AsideMenu';
 import '../WantedGNB.scss';
