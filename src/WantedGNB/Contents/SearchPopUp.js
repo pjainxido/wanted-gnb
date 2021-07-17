@@ -4,18 +4,30 @@ import { GNBContext } from '..';
 
 const SearchPopUp = () => {
   const store = useContext(GNBContext);
+  let dynamicWidth = 0;
   const closeSearchPopUp = () => {
     store.setIsSearchPopup(false);
   };
   const clickFormCheck = (e) => {
-    if (e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'BUTTON') {
-      closeSearchPopUp();
+    if (dynamicWidth>767 ) {
+      console.log(dynamicWidth);
+      if (e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'BUTTON') {
+        closeSearchPopUp();
+      }
     }
   };
+  const updateWidth = (e) =>{
+    dynamicWidth = e.target.innerWidth;
+  };
+  
   useEffect(() => {
+    dynamicWidth = window.innerWidth;
     window.addEventListener('click', clickFormCheck, false);
-    return () => window.removeEventListener('click', clickFormCheck);
-  }, []);
+    window.addEventListener("resize", updateWidth, false);
+    return () => {
+        window.removeEventListener('click', clickFormCheck);
+        window.removeEventListener('resize', updateWidth );
+    }}, []);
 
   return (
     <div className='search_popup'>
