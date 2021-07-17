@@ -4,7 +4,7 @@ const BetaSVG = () => {
   console.log('beta');
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='18' height='11' viewBox='0 0 18 11'>
-      <g fill='none' fill-rule='evenodd' font-family='AppleSDGothicNeo-SemiBold, Apple SD Gothic Neo' font-size='9' font-weight='500'>
+      <g fill='none' fillRule='evenodd' fontFamily='AppleSDGothicNeo-SemiBold, Apple SD Gothic Neo' fontSize='9' fontWeight='500'>
         <g fill='#36F'>
           <g>
             <g>
