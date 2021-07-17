@@ -1,19 +1,27 @@
-import React, {useContext}from 'react';
+import React, { useContext, useEffect } from 'react';
 import './SearchPopUp.scss';
 import { GNBContext } from '..';
 
 const SearchPopUp = () => {
   const store = useContext(GNBContext);
   const closeSearchPopUp = () => {
-    console.log('close!');
     store.setIsSearchPopup(false);
-  }
+  };
+  const clickFormCheck = (e) => {
+    if (e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'BUTTON') {
+      closeSearchPopUp();
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('click', clickFormCheck, false);
+    return () => window.removeEventListener('click', clickFormCheck);
+  }, []);
+
   return (
     <div className='search_popup'>
       <div className='search_container'>
         <form role='presentation' action='.'>
-          <input type='search' placeholder='#태그, 회사, 포지션 검색' autocomplete='off' >
-          </input>
+          <input type='search' placeholder='#태그, 회사, 포지션 검색' autocomplete='off'></input>
           <svg className='searchIcon' xmlns='https://www.w3.org/2000/svg' xmlnsXlink='https://www.w3.org/1999/xlink' width='18' height='18' viewBox='0 0 18 18'>
             <defs>
               <path
@@ -26,7 +34,7 @@ const SearchPopUp = () => {
             </g>
           </svg>
           <button className='exitButton' type='button' onClick={closeSearchPopUp}>
-            <svg width='24' height='24' >
+            <svg width='24' height='24'>
               <path
                 fill='currentColor'
                 d='M17.97 19.03a.75.75 0 001.06-1.06l-6.5-6.5a.75.75 0 00-1.06 0l-6.5 6.5a.75.75 0 001.06 1.06L12 13.06l5.97 5.97zM12 10.94L6.03 4.97a.75.75 0 00-1.06 1.06l6.5 6.5a.75.75 0 001.06 0l6.5-6.5a.75.75 0 00-1.06-1.06L12 10.94z'
@@ -34,9 +42,9 @@ const SearchPopUp = () => {
             </svg>
           </button>
         </form>
-        <div className='recommend' >
+        <div className='recommend'>
           <div className='recommand_container'>
-            <h4 >추천태그로 검색해보세요</h4>
+            <h4>추천태그로 검색해보세요</h4>
             <a href='/tag_search' class='goCompanyTag' data-attribute-id='search__goCompanyTag'>
               기업태그 홈 이동하기
               <svg width='12' height='12' viewBox='0 0 12 12'>
@@ -75,8 +83,7 @@ const SearchPopUp = () => {
             </ul>
           </div>
         </div>
-        <div className='dim' >
-        </div>
+        <div className='dim' onClick={closeSearchPopUp}></div>
       </div>
     </div>
   );
